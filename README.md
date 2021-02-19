@@ -10,13 +10,21 @@ After following the guide, the below section ["What is included"](#what-is-inclu
 
 bedrock-sb-java-base: Contains the base dependencies and plugins required to build, test and run the application.
 
+bedrock-sb-java-rest: Adding dependencies needed to expose a REST API endpoints and create swagger documentation.
+
 #### Source code
 
 bedrock-sb-java-base: Contains the main application class.
 
+bedrock-sb-java-rest: Adding domain classes, custom exception handler and configuration for swagger documentation.
+
 #### .gitignore
 
 Excludes the most common clutter from source control management.
+
+#### ErrorResponse
+
+Response body that the application returns when an exception occurs
 
 ## Update strategy
 
