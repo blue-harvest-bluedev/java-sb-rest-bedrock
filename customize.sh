@@ -46,6 +46,14 @@ fi
 echo "Great, you'll rock building ${MAIN_CLASS_NAME}!"
 echo
 
+echo 'Please provide the port number you want to deploy your application. The default is (8080)'
+read PORT_NUMBER
+if [[ -z $PORT_NUMBER ]]; then
+  PORT_NUMBER="8080"
+fi
+echo "Great, you'll deploy on the best port ${PORT_NUMBER}!"
+echo
+
 @echo 'That'"'"'s it! Crazy right? You were in the zone as well!'
 echo
 
@@ -78,6 +86,7 @@ echo
 echo '[INFO] Customizing Dockerfile'
 replace "blueharvest-bluedev" ${TEAM_NAME} "./Dockerfile"
 replace "com.blueharvest.bluedev.bedrocksb.BedrockSbApplication" "${MAIN_PACKAGE_PATH}.${MAIN_CLASS_NAME}" "./Dockerfile"
+replace "8080" ${PORT_NUMBER} "./Dockerfile"
 echo
 
 echo '[INFO] Customizing .gitlab-ci.yml'
@@ -89,9 +98,13 @@ echo '[INFO] Customizing ./src/main/resources/logback-spring.xml'
 replace "com.blueharvest.bluedev.bedrocksb" ${MAIN_PACKAGE_PATH} "./src/main/resources/logback-spring.xml"
 echo
 
+echo '[INFO] Customizing application.yml'
+replace "8080" ${PORT_NUMBER} "./src/main/resources/application.yml"
+echo
+
 echo '[INFO] Refactoring the project packages and directories'
 for f in $(find . -type f -name "*.java")
-do 
+do
   replace "com.blueharvest.bluedev.bedrocksb" ${MAIN_PACKAGE_PATH} "$f"
   replace "BedrockSbApplication" ${MAIN_CLASS_NAME} "$f"
 done
