@@ -54,7 +54,7 @@ fi
 echo "Great, you'll deploy on the best port ${PORT_NUMBER}!"
 echo
 
-@echo 'That'"'"'s it! Crazy right? You were in the zone as well!'
+echo 'That'"'"'s it! Crazy right? You were in the zone as well!'
 echo
 
 echo 'Now please give me a few milliseconds to customize your project...'
